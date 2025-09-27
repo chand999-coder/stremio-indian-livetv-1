@@ -1,17 +1,35 @@
 {
-    "version": 2,
-    "name": "stremio-indian-livetv",
-    "builds": [
-        { "src": "*.php", "use": "now-php" }
-    ],
-	"rewrites": [
-    { "source": "/manifest.json", "destination": "/manifest.php" },
-    { "source": "/meta/(.*)/(.*)/(.*).json", "destination": "/metas.php?type=$1&id=$2&extra=$3" },
-    { "source": "/meta/(.*)/(.*).json", "destination": "/metas.php?type=$1&id=$2" },
-	{ "source": "/stream/(.*)/(.*)/(.*).json", "destination": "/streams.php?type=$1&id=$2&extra=$3" },
-	{ "source": "/stream/(.*)/(.*).json", "destination": "/streams.php?type=$1&id=$2" },
-	{ "source": "/catalog/(.*)/(.*)/(.*).json", "destination": "/catalogs.php?type=$1&id=$2&extra=$3" },
-    { "source": "/catalog/(.*)/(.*).json", "destination": "/catalogs.php?type=$1&id=$2" }
+  "version": 2,
+  "name": "stremio-indian-livetv",
+  
+  // 1. REMOVE the "builds" section completely (it contains the broken "now-php" builder)
+  // The 'functions' property replaces 'builds' for serverless functions.
+  "functions": {
+    // This tells Vercel to use a stable, community-maintained PHP runtime
+    // for all PHP files inside the 'api' directory.
+    "api/*.php": {
+      "runtime": "vercel-php@0.7.4"
+    }
+  },
+  
+  // 2. Use 'routes' and adjust the 'destination' paths to point to the new 'api/' location
+  "routes": [
+    // Manifest routes
+    { "src": "/manifest.json", "dest": "/api/manifest.php" },
+
+    // Meta routes
+    { "src": "/meta/(.*)/(.*)/(.*).json", "dest": "/api/metas.php?type=$1&id=$2&extra=$3" },
+    { "src": "/meta/(.*)/(.*).json", "dest": "/api/metas.php?type=$1&id=$2" },
+
+    // Stream routes
+    { "src": "/stream/(.*)/(.*)/(.*).json", "dest": "/api/streams.php?type=$1&id=$2&extra=$3" },
+    { "src": "/stream/(.*)/(.*).json", "dest": "/api/streams.php?type=$1&id=$2" },
+
+    // Catalog routes
+    { "src": "/catalog/(.*)/(.*)/(.*).json", "dest": "/api/catalogs.php?type=$1&id=$2&extra=$3" },
+    { "src": "/catalog/(.*)/(.*).json", "dest": "/api/catalogs.php?type=$1&id=$2" }
   ],
+  
+  // Keep region, although for this PHP runtime, 'default' region often works best
   "regions" : ["bom1"]
 }
