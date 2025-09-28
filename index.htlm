@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stremio Addon Deployment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .manifest-link {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✅ Stremio Indian Live TV Add-on is Running!</h1>
+        <p>This deployment is an **API service** and does not have a public website.</p>
+        <p>To use this add-on, you must install it directly in the Stremio application.</p>
+        
+        <h2>Installation Instructions:</h2>
+        <p>Use the full deployment URL and add <span class="manifest-link">/manifest.json</span> to the end.</p>
+        <p>Example: 
+            <br>
+            <code class="manifest-link">https://your-addon-name.vercel.app/manifest.json</code>
+        </p>
+    </div>
+</body>
+</html>
