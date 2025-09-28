@@ -1,15 +1,25 @@
 {
-    "name": "maaAnandsheela/stremio-indian-livetv",
+    "name": "maaanandsheela/stremio-indian-livetv",
     "description": "Indian Live Tv channels from various sources. Some of them works only on Indian IP.",
     "type": "project",
     "require": {
-        "guzzlehttp/guzzle": "^6.5",
-        "phpfastcache/phpfastcache": "^7.1"
+        "php": ">=7.4",       
+        "guzzlehttp/guzzle": "^7.0",     
+        "phpfastcache/phpfastcache": "^9.0" 
     },
     "authors": [
         {
             "name": "maaAnandsheela",
             "email": "maaanandsheela@protonmail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "files": [
+            "vendor/autoload.php"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist"
+    }
 }
