@@ -9,6 +9,11 @@
   },
   
   "routes": [
+    { 
+      "src": "/", 
+      "dest": "/api/manifest.php" 
+    },
+    
     { "src": "/manifest.json", "dest": "/api/manifest.php" },
 
     { "src": "/meta/(.*)/(.*)/(.*).json", "dest": "/api/metas.php?type=$1&id=$2&extra=$3" },
