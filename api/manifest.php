@@ -1,7 +1,9 @@
 <?php
 //includes
-include 'config.php';
-include 'helpers.php';
+// CORRECTED: Navigating one directory up (from /api/) to find the root files (config.php and helpers.php)
+include __DIR__ . '/../config.php';
+include __DIR__ . '/../helpers.php';
+
 // enable CORS and set JSON Content-Type
 setHeaders();
 
