@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "name": "stremio-indian-livetv-1",
+  
+  // 1. ADD the 'functions' property to define the new PHP runtime.
+  "functions": {
+    "api/*.php": {
+      "runtime": "vercel-php@0.7.4"
+    }
+  },
+  
+  // 2. The 'routes' (or 'rewrites') must be updated to point to the new '/api/' location.
+  "routes": [
+    // Manifest routes
+    { "src": "/manifest.json", "dest": "/api/manifest.php" },
+
+    // Meta routes
+    { "src": "/meta/(.*)/(.*)/(.*).json", "dest": "/api/metas.php?type=$1&id=$2&extra=$3" },
+    { "src": "/meta/(.*)/(.*).json", "dest": "/api/metas.php?type=$1&id=$2" },
+
+    // Stream routes
+    { "src": "/stream/(.*)/(.*)/(.*).json", "dest": "/api/streams.php?type=$1&id=$2&extra=$3" },
+    { "src": "/stream/(.*)/(.*).json", "dest": "/api/streams.php?type=$1&id=$2" },
+
+    // Catalog routes
+    { "src": "/catalog/(.*)/(.*)/(.*).json", "dest": "/api/catalogs.php?type=$1&id=$2&extra=$3" },
+    { "src": "/catalog/(.*)/(.*).json", "dest": "/api/catalogs.php?type=$1&id=$2" }
+  ],
+  
+  // Keep your desired deployment region
+  "regions" : ["iad1"] 
+}
